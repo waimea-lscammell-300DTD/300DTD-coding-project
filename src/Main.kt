@@ -1,13 +1,15 @@
 /**
  * ------------------------------------------------------------------------
- * PROJECT NAME HERE
- * Level 2 programming project
+ * Waimea dating Sim
+ * Level 3 programming project
  *
- * by YOUR NAME HERE
+ * by Luke Scammell
  *
- * BRIEF PROJECT DESCRIPTION HERE
- * BRIEF PROJECT DESCRIPTION HERE
- * BRIEF PROJECT DESCRIPTION HERE
+ * The project involves the programming of a game.
+
+ * You are a new student at Waimea College and you meet some of the students your objective is to use your talking skills to attract your partner
+ 
+ * You will pick a response from 4 options and what you choose will change how people think of you and might affect what other peoples responses
  * ------------------------------------------------------------------------
  */
 

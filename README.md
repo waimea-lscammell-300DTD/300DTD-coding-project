@@ -1,6 +1,6 @@
-# PROJECT NAME HERE
+# Waimea dating Sim
 
-### Level 3 Programming Project by YOUR NAME HERE
+### Level 3 Programming Project by Luke Scammell
 
 This project is assessed against [AS91906](https://www.nzqa.govt.nz/nqfdocs/ncea-resource/achievements/2019/as91906.pdf)
 
@@ -8,9 +8,12 @@ This project is assessed against [AS91906](https://www.nzqa.govt.nz/nqfdocs/ncea
 
 The project involves the programming of a game.
 
+You are a new student at Waimea College and you meet some of the students your objective is to use your talking skills to attract your partner
+
+You will pick a response from 4 options and what you choose will change how people think of you and might affect what other peoples responses
+
 BRIEF PROJECT DESCRIPTION HERE
-BRIEF PROJECT DESCRIPTION HERE
-BRIEF PROJECT DESCRIPTION HERE
+
 BRIEF PROJECT DESCRIPTION HERE
 
 
