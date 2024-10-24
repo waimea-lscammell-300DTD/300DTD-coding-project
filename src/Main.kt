@@ -77,7 +77,7 @@ class GUI : JFrame(), ActionListener {
         isVisible = true
     }
     fun setupChoice() {
-        val choice1scene1 = Scene(")
+        val choice1scene1 =         Scene(")
 
         val choice2scene1 = Scene("no")
 
