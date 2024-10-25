@@ -15,7 +15,6 @@
 
 
 import com.formdev.flatlaf.FlatDarkLaf
-import com.formdev.flatlaf.FlatLightLaf
 import java.awt.*
 import java.awt.event.*
 import javax.swing.*
@@ -30,12 +29,29 @@ class Scene(
     var choice3Link: Scene? = null
     var choice4Link: Scene? = null
 
-    fun addConnection(choiceNum: Int, scene: Scene) {
+    var choice1Label: String? = null
+    var choice2Label: String? = null
+    var choice3Label: String? = null
+    var choice4Label: String? = null
+
+    fun addConnection(choiceNum: Int, label: String, scene: Scene) {
         when (choiceNum) {
-            1 -> choice1Link = scene
-            2 -> choice2Link = scene
-            3 -> choice3Link = scene
-            4 -> choice4Link = scene
+            1 -> {
+                choice1Link = scene
+                choice1Label = label
+            }
+            2 -> {
+                choice2Link = scene
+                choice2Label = label
+            }
+            3 -> {
+                choice3Link = scene
+                choice3Label = label
+            }
+            4 -> {
+                choice4Link = scene
+                choice4Label = label
+            }
         }
     }
 }
@@ -47,53 +63,85 @@ class Scene(
  * Defines the UI and responds to events
  */
 class GUI : JFrame(), ActionListener {
+    val scenes = mutableListOf<Scene>()
+    var currentScene: Scene
 
     // Setup some properties to hold the UI elements
-    private lateinit var exampleLabel: JLabel
+    private lateinit var descriptionLabel: JLabel
     private lateinit var choice1Button: JButton
     private lateinit var choice2Button: JButton
     private lateinit var choice3Button: JButton
     private lateinit var choice4Button: JButton
     private lateinit var imageLabel: JLabel
-    private lateinit var choice1Scene1: JButton
-    private lateinit var choice2Scene1: JButton
-    private lateinit var choice3Scene1: JButton
-    private lateinit var choice4Scene1: JButton
-
-
-    private lateinit var scoutImageIcon: ImageIcon
 
     /**
      * Create, build and run the UI
      */
     init {
+        setupScenes()
         setupWindow()
         buildUI()
-        loadImages()
+
 
 
         // Show the app, centred on screen
         setLocationRelativeTo(null)
         isVisible = true
+
+        currentScene = scenes.first()
+        showScene()
     }
-    fun setupChoice() {
-        val choice1scene1 =         Scene(")
+    fun setupScenes() {
+        // Level 0
+        val chicken =  Scene("scout chicken","Scout appears and walks slowly up to you, he says 'do you have a bucket of chicken?'", "src/images/scout.png")
+        scenes.add(chicken)
 
-        val choice2scene1 = Scene("no")
+        // Level 1
+        val yes =  Scene("yes","yes", "src/images/medic.png")
+        val no =  Scene("no","no", "src/images/ubersaw medic.png")
+        val goaway =  Scene("go away","go away", "src/images/medic.png")
+        val share =  Scene("share","I've allready got some would you like to share?", "src/images/ubersaw medic.png")
+        scenes.add(yes)
+        scenes.add(no)
+        scenes.add(goaway)
+        scenes.add(share)
+        chicken.addConnection(1, "yes", yes)
+        chicken.addConnection(2, "no", no)
+        chicken.addConnection(3, "go away", goaway)
+        chicken.addConnection(4, "smile", share)
 
-        val choice3scene1 = Scene("go away")
 
-        val choice3scene1 = JButton("yes, but I've eaten it all")
+        // Yes
+        val eat =  Scene("eat ","eating chicken*", "src/images/medic.png")
+        val take =  Scene("take ","takes chicken*", "src/images/ubersaw medic.png")
+        val cook =  Scene("cook","cookes the chicken some more*", "src/images/medic.png")
+        scenes.add(eat)
+        scenes.add(take)
+        scenes.add(cook)
+        yes.addConnection(1, "eat", eat)
+        yes.addConnection(2, "take", take)
+        yes.addConnection(3, "cook", cook)
 
+        // No
+        val deny   =  Scene("deny ","ok ill just eat them myself :(", "src/images/medic.png")
+        scenes.add(eat)
+        no.addConnection(1, "deny", deny)
+
+        // Cook
+        val finishcooking  =  Scene("Finish Cooking","You cook the chicken and it looks even tastier", "src/images/medic.png")
+        cook.addConnection(3, "finish cooking", finishcooking)
+        finishcooking.addConnection(1, "Finish cooking", yes)
+
+
+        // Things that bring you back to the start
+        val denial = Scene("denial","Scout walks away sadly", "src/images/medic.png")
+        val death = Scene("You died!", "scout didnt like you taking his chicken", "src/images/death.png")
+        take.addConnection(1, "Take it", death)
+        deny.addConnection(1, "Scout leaves", denial)
+        death.addConnection(1, "Restart", chicken)
+        denial.addConnection(1, "Restart", chicken)
     }
 
-    private fun loadImages(){
-        var scout = ImageIcon("src/images/250px-Taunt_Deep_Fried_Desire.png").image
-        scout = scout.getScaledInstance(200, 200, Image.SCALE_SMOOTH)
-        scoutImageIcon = ImageIcon(scout)
-
-        imageLabel.icon = scoutImageIcon
-    }
     /**
      * Configure the main window
      */
@@ -113,10 +161,10 @@ class GUI : JFrame(), ActionListener {
     private fun buildUI() {
         val baseFont = Font(Font.SANS_SERIF, Font.PLAIN, 20)
 
-        exampleLabel = JLabel("Scout appears and walks slowly up to you, he says 'do you have a bucket of chicken?'", SwingConstants.CENTER)
-        exampleLabel.bounds = Rectangle(100, 10, 800, 40)
-        exampleLabel.font = baseFont
-        add(exampleLabel)
+        descriptionLabel = JLabel("Scout appears and walks slowly up to you, he says 'do you have a bucket of chicken?'", SwingConstants.CENTER)
+        descriptionLabel.bounds = Rectangle(100, 10, 800, 40)
+        descriptionLabel.font = baseFont
+        add(descriptionLabel)
 
         choice1Button = JButton("Choice 1")
         choice1Button.bounds = Rectangle(125,350,150,50)
@@ -158,21 +206,63 @@ class GUI : JFrame(), ActionListener {
             choice4Button -> choice4Action()
         }
     }
+    private fun showScene() {
+        descriptionLabel.text = currentScene.desc
 
+        if (currentScene.choice1Link != null) {
+            choice1Button.text = currentScene.choice1Label
+            choice1Button.isVisible = true
+        }
+        else {
+            choice1Button.isVisible = false
+        }
+
+        if (currentScene.choice2Link != null) {
+            choice2Button.text = currentScene.choice2Label
+            choice2Button.isVisible = true
+        }
+        else {
+            choice2Button.isVisible = false
+        }
+
+        if (currentScene.choice3Link != null) {
+            choice3Button.text = currentScene.choice3Label
+            choice3Button.isVisible = true
+        }
+        else {
+            choice3Button.isVisible = false
+        }
+
+        if (currentScene.choice4Link != null) {
+            choice4Button.text = currentScene.choice4Label
+            choice4Button.isVisible = true
+        }
+        else {
+            choice4Button.isVisible = false
+        }
+
+        var image = ImageIcon(currentScene.img).image
+        image = image.getScaledInstance(200, 200, Image.SCALE_SMOOTH)
+        imageLabel.icon = ImageIcon(image)
+    }
     /**
      * An Example Action
      */
     private fun choice1Action() {
-        exampleLabel.text = "yes"
+        currentScene = currentScene.choice1Link!!
+        showScene()
     }
     private fun choice2Action() {
-        exampleLabel.text = "no"
+        currentScene = currentScene.choice2Link!!
+        showScene()
     }
     private fun choice3Action() {
-        exampleLabel.text = "go away"
+        currentScene = currentScene.choice3Link!!
+        showScene()
     }
     private fun  choice4Action() {
-        exampleLabel.text = "yes, but I've eaten it all"
+        currentScene = currentScene.choice4Link!!
+        showScene()
     }
 }
 
