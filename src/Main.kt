@@ -132,20 +132,34 @@ class GUI : JFrame(), ActionListener {
         scenes.add(deny2)
         goaway.addConnection(1, "deny", deny2)
 
-        // Cook
-        val finishcooking  =  Scene("Finish Cooking","You cook the chicken and it looks even tastier", "src/images/chicken hat.png")
-        scenes.add(finishcooking)
-        cook.addConnection(3, "finish cooking", finishcooking)
-        finishcooking.addConnection(1, "Finish cooking", yes)
-
         //Share
         val yeah  =  Scene("Finish Cooking","'yay' scout takes chicken*", "src/images/chicken hat.png")
         val Iwasjoking  =  Scene("I was Joking","Why would you lie to me ;(", "src/images/Scout cry.png")
-
         scenes.add(yeah)
         scenes.add(Iwasjoking)
         share.addConnection(1, "yeah", yeah)
         share.addConnection(2, "I was Joking", Iwasjoking)
+
+        // Cook
+        val finishcooking  =  Scene("Finish Cooking","You cook the chicken and it looks even tastier", "src/images/chicken hat.png")
+        scenes.add(finishcooking)
+        cook.addConnection(1, "finish cooking", finishcooking)
+        finishcooking.addConnection(1, "Finish cooking", yes)
+
+        // Eat
+        val pyromeet =  Scene("meet pyro","Pyro appears and says hello", "src/images/pyro.png")
+        val heavymeet  =  Scene("meet heavy","Heavy appears and says hello", "src/images/Heavy.png")
+        val medicmeet =  Scene("meet medic","Medic appears and says hello", "src/images/medic.png")
+        val spymeet =  Scene("meet spy","Spy appears and says hello", "src/images/Spy.png")
+        scenes.add(heavymeet)
+        scenes.add(pyromeet)
+        scenes.add(medicmeet)
+        scenes.add(spymeet)
+        eat.addConnection(1, "Say hello to heavy", heavymeet)
+        eat.addConnection(2, "Say hello to pyro", pyromeet)
+        eat.addConnection(3, "Say hello to medic", medicmeet)
+        eat.addConnection(4, "Say hello to spy", spymeet)
+
 
 
 
