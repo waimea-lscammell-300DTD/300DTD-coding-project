@@ -4,18 +4,17 @@
 
 The project involves the programming of a game.
 
-BRIEF DESCRIPTION OF GAME HERE
-BRIEF DESCRIPTION OF GAME HERE
-BRIEF DESCRIPTION OF GAME HERE
+You are a new mercenary joining the tf2 cast, start off by meeting the amazing scout
+and get to know the other mercenaries along the way, beware what choice you choose
+if you choose wrong you may pay the price.
 
 ### Game Features and Rules
 
 The game has the following features and/or rules:
 
-- GAME FEATURE / RULE
-- GAME FEATURE / RULE
-- GAME FEATURE / RULE
-- GAME FEATURE / RULE
+- Choose 4 choices
+- death and denial scenes
+- being brought to other scenes by a choice
 
 ---
 

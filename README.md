@@ -1,22 +1,15 @@
-# Waimea dating Sim
+# A Tf2 story
 
 ### Level 3 Programming Project by Luke Scammell
 
 This project is assessed against [AS91906](https://www.nzqa.govt.nz/nqfdocs/ncea-resource/achievements/2019/as91906.pdf)
 
 ## Project Description
-
 The project involves the programming of a game.
 
-You are a new student at Waimea College and you meet some of the students your objective is to use your talking skills to attract your partner
-
-You will pick a response from 4 options and what you choose will change how people think of you and might affect what other peoples responses
-
-BRIEF PROJECT DESCRIPTION HERE
-
-BRIEF PROJECT DESCRIPTION HERE
-
-
+You are a new mercenary joining the tf2 cast, start off by meeting the amazing scout
+and get to know the other mercenaries along the way, beware what choice you choose
+if you choose wrong you may pay the price
 ## Source Code
 
 The project is written in [Kotlin](https://kotlinlang.org/) and uses [Swing](https://docs.oracle.com/javase/8/docs/technotes/guides/swing/) for the GUI, themed with [FlatLAF](https://github.com/JFormDesigner/FlatLaf) for a modern look.
