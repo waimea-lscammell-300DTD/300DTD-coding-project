@@ -23,6 +23,8 @@ class Scene(
     val name:String,
     val desc:String,
     val img:String,
+    val isdeath:Boolean = false,
+    val isdenial:Boolean = false
 ) {
     var choice1Link: Scene? = null
     var choice2Link: Scene? = null
@@ -33,12 +35,18 @@ class Scene(
     var choice2Label: String? = null
     var choice3Label: String? = null
     var choice4Label: String? = null
+//
+//    var choice1sound: String? = null
+//    var choice2sound: String? = null
+//    var choice3sound: String? = null
+//    var choice4sound: String? = null
 
     fun addConnection(choiceNum: Int, label: String, scene: Scene) {
         when (choiceNum) {
             1 -> {
                 choice1Link = scene
                 choice1Label = label
+//                choice1sound = sound
             }
             2 -> {
                 choice2Link = scene
@@ -65,16 +73,21 @@ class Scene(
 class GUI : JFrame(), ActionListener {
     val scenes = mutableListOf<Scene>()
     var currentScene: Scene
+    var deaths = 0
+    var denial = 0
 
     // Setup some properties to hold the UI elements
     private lateinit var descriptionLabel: JLabel
-    private lateinit var deathCounter: JLabel
-    private lateinit var denyCounter: JLabel
+//    private lateinit var deathCounter: JLabel
+//    private lateinit var denyCounter: JLabel
     private lateinit var choice1Button: JButton
     private lateinit var choice2Button: JButton
     private lateinit var choice3Button: JButton
     private lateinit var choice4Button: JButton
     private lateinit var imageLabel: JLabel
+    private lateinit var deathsLabel: JLabel
+    private lateinit var denialLabel: JLabel
+
 
     /**
      * Create, build and run the UI
@@ -210,13 +223,13 @@ class GUI : JFrame(), ActionListener {
         spycrab.addConnection(1, "Talk with someone else", eat)
 
         // Things that bring you back to the start
-        val denial = Scene("denial","Scout walks away sadly", "src/images/scout sad.png")
-        val death = Scene("You died!", "scout didn't like you taking his chicken", "src/images/scout with gun.png")
-        val death2 = Scene("You died!", "scout doesn't like liars", "src/images/scout with gun.png")
-        val death3 = Scene("You died!", "Sasha is great gun you must praise her", "src/images/heavy angry.png")
-        val death4 = Scene("You died!", "Pyro hit you with a flare", "src/images/Pyro flare.png")
-        val death5 = Scene("You died!", "Medic stabbed you with his ubersaw", "src/images/ubersaw medic.png")
-        val death6 = Scene("You died!", "As you were walking away spy found out you stole his cigarettes and backstabbs you", "src/images/spy backstab.png")
+        val denial = Scene("denial","Scout walks away sadly", "src/images/scout sad.png",false, true)
+        val death = Scene("You died!", "scout didn't like you taking his chicken", "src/images/scout with gun.png", true)
+        val death2 = Scene("You died!", "scout doesn't like liars", "src/images/scout with gun.png", true)
+        val death3 = Scene("You died!", "Sasha is great gun you must praise her", "src/images/heavy angry.png", true)
+        val death4 = Scene("You died!", "Pyro hit you with a flare", "src/images/Pyro flare.png", true)
+        val death5 = Scene("You died!", "Medic stabbed you with his ubersaw", "src/images/ubersaw medic.png",true)
+        val death6 = Scene("You died!", "As you were walking away spy found out you stole his cigarettes and backstabbs you", "src/images/spy backstab.png",true)
         scenes.add(denial)
         scenes.add(death)
         scenes.add(death2)
@@ -292,6 +305,16 @@ class GUI : JFrame(), ActionListener {
         imageLabel = JLabel()
         imageLabel.bounds = Rectangle(550, 150, 400, 400)
         add(imageLabel)
+
+        deathsLabel= JLabel("Deaths: $deaths")
+        deathsLabel.bounds = Rectangle(50, 900, 800, 40)
+        deathsLabel.font = baseFont
+        add(deathsLabel)
+
+        denialLabel= JLabel("Deaths: $deaths")
+        denialLabel.bounds = Rectangle(1400, 900, 800, 40)
+        denialLabel.font = baseFont
+        add(denialLabel)
     }
 
     /**
@@ -343,6 +366,16 @@ class GUI : JFrame(), ActionListener {
         var image = ImageIcon(currentScene.img).image
         image = image.getScaledInstance(400, 400, Image.SCALE_SMOOTH)
         imageLabel.icon = ImageIcon(image)
+
+        if (currentScene.isdeath) {
+            deaths++
+        }
+        if (currentScene.isdenial) {
+            denial++
+        }
+
+        deathsLabel.text = "Deaths: $deaths"
+        denialLabel.text = "Denial: $denial"
     }
     /**
      * An Example Action
