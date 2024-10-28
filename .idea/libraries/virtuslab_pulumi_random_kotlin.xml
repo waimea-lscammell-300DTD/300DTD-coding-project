@@ -1,0 +1,45 @@
+<component name="libraryTable">
+  <library name="virtuslab.pulumi.random.kotlin" type="repository">
+    <properties maven-id="org.virtuslab:pulumi-random-kotlin:4.16.6.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/virtuslab/pulumi-random-kotlin/4.16.6.0/pulumi-random-kotlin-4.16.6.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/pulumi/random/4.16.6/random-4.16.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/code/gson/gson/2.8.9/gson-2.8.9.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/pulumi/pulumi/0.16.1/pulumi-0.16.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/grpc/grpc-protobuf/1.54.1/grpc-protobuf-1.54.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/grpc/grpc-api/1.54.1/grpc-api-1.54.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/grpc/grpc-context/1.54.1/grpc-context-1.54.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/api/grpc/proto-google-common-protos/2.9.0/proto-google-common-protos-2.9.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/grpc/grpc-protobuf-lite/1.54.1/grpc-protobuf-lite-1.54.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/grpc/grpc-stub/1.54.1/grpc-stub-1.54.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/javacrumbs/future-converter/future-converter-java8-guava/1.2.0/future-converter-java8-guava-1.2.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/javacrumbs/future-converter/future-converter-common/1.2.0/future-converter-common-1.2.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/javacrumbs/future-converter/future-converter-java8-common/1.2.0/future-converter-java8-common-1.2.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/javacrumbs/future-converter/future-converter-guava-common/1.2.0/future-converter-guava-common-1.2.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/32.1.2-jre/guava-32.1.2-jre.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/3.24.1/protobuf-java-3.24.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java-util/3.24.1/protobuf-java-util-3.24.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/grpc/grpc-netty-shaded/1.54.1/grpc-netty-shaded-1.54.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/perfmark/perfmark-api/0.25.0/perfmark-api-0.25.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/io/grpc/grpc-core/1.54.1/grpc-core-1.54.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/android/annotations/4.1.1.4/annotations-4.1.1.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/codehaus/mojo/animal-sniffer-annotations/1.21/animal-sniffer-annotations-1.21.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlinx/kotlinx-serialization-json-jvm/1.6.3/kotlinx-serialization-json-jvm-1.6.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib/1.9.22/kotlin-stdlib-1.9.22.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/13.0/annotations-13.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.22/kotlin-stdlib-common-1.9.22.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlinx/kotlinx-serialization-core-jvm/1.6.3/kotlinx-serialization-core-jvm-1.6.3.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/virtuslab/pulumi-kotlin/0.11.0.0/pulumi-kotlin-0.11.0.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlinx/kotlinx-coroutines-jdk8/1.8.1/kotlinx-coroutines-jdk8-1.8.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.8.1/kotlinx-coroutines-core-jvm-1.8.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

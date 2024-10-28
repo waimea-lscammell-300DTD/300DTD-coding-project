@@ -68,6 +68,8 @@ class GUI : JFrame(), ActionListener {
 
     // Setup some properties to hold the UI elements
     private lateinit var descriptionLabel: JLabel
+    private lateinit var deathCounter: JLabel
+    private lateinit var denyCounter: JLabel
     private lateinit var choice1Button: JButton
     private lateinit var choice2Button: JButton
     private lateinit var choice3Button: JButton
@@ -92,11 +94,11 @@ class GUI : JFrame(), ActionListener {
         showScene()
     }
     fun setupScenes() {
-        // Level 0
+        // Starting scene
         val chicken =  Scene("scout chicken","Scout appears and walks slowly up to you, he says 'do you have a bucket of chicken?'", "src/images/scout.png")
         scenes.add(chicken)
 
-        // Level 1
+        // Scene 1 answers
         val yes =  Scene("yes","yes", "src/images/scout happy.png")
         val no =  Scene("no","no", "src/images/scout sad.png")
         val goaway =  Scene("go away","go away", "src/images/Scout suprised.png")
@@ -112,7 +114,7 @@ class GUI : JFrame(), ActionListener {
 
 
         // Yes
-        val eat =  Scene("eat ","eating chicken*", "src/images/scout chicken costume.png")
+        val eat =  Scene("eat ","eating chicken* some other mercenaries arrive. Who would you like to talk to?", "src/images/scout chicken costume.png")
         val take =  Scene("take ","takes chicken*", "src/images/Scout suprised.png")
         val cook =  Scene("cook","cooks the chicken some more*", "src/images/chicken hat.png")
         scenes.add(eat)
@@ -127,18 +129,19 @@ class GUI : JFrame(), ActionListener {
         scenes.add(deny)
         no.addConnection(1, "deny", deny)
 
-        //Go away
+        // Go away
         val deny2  = Scene("deny ","ok ill just eat them myself :(", "src/images/Scout cry.png")
         scenes.add(deny2)
         goaway.addConnection(1, "deny", deny2)
 
-        //Share
+        // Share
         val yeah  =  Scene("Finish Cooking","'yay' scout takes chicken*", "src/images/chicken hat.png")
         val Iwasjoking  =  Scene("I was Joking","Why would you lie to me ;(", "src/images/Scout cry.png")
         scenes.add(yeah)
         scenes.add(Iwasjoking)
         share.addConnection(1, "yeah", yeah)
         share.addConnection(2, "I was Joking", Iwasjoking)
+        yeah.addConnection(1, "Talk with someone else", chicken)
 
         // Cook
         val finishcooking  =  Scene("Finish Cooking","You cook the chicken and it looks even tastier", "src/images/chicken hat.png")
@@ -160,19 +163,81 @@ class GUI : JFrame(), ActionListener {
         eat.addConnection(3, "Say hello to medic", medicmeet)
         eat.addConnection(4, "Say hello to spy", spymeet)
 
+        // Heavy
+        val makefunsasha = Scene("Make fun of sasha","Sasha is stupid", "src/images/Heavy with sasha.png")
+        val askaboutsisters = Scene("ask about sisters","My sisters are doing well, I haven't been able to see them recently though", "src/images/pyro.png")
+        heavymeet.addConnection(1, "Make fun of sasha", makefunsasha)
+        heavymeet.addConnection(2, "Ask about sisters", askaboutsisters)
+        askaboutsisters.addConnection(1, "Talk with someone else", eat)
 
+        // Pyro
+        val pyrohitsapple = Scene("Apple challenge","Pyro aims her flare gun at the apple on your head", "src/images/pyro.png")
+        val askaboutpyrogender = Scene("ask about pyro gender","I am a girl :3", "src/images/Fempyro.png")
+        val givealollipop = Scene("ask about pyro gender","THANK YOU LOLLYPOPS ARE MY FAVORITE", "src/images/Lollypop pyro.png")
+        scenes.add(pyrohitsapple)
+        scenes.add(askaboutpyrogender)
+        scenes.add(givealollipop)
+        pyromeet.addConnection(1, "Apple challenge", pyrohitsapple)
+        pyromeet.addConnection(2, "Are you a guy or a girl", askaboutpyrogender)
+        pyromeet.addConnection(3, "Here is a lollypop", givealollipop)
+        askaboutpyrogender.addConnection(1, "Talk with someone else", eat)
+        givealollipop.addConnection(1, "Talk with someone else", eat)
 
+        // Medic
+        val someoneneedshealing = Scene("Tell medic someone needs healing","Ok Ill go heal them, thanks for telling me","src/images/healing medic.png")
+        val medicisbad = Scene("tell medic he is a bad medic","Oh is that what you think of me, I guess you deserve to die","src/images/medic angry.png")
+        val dance = Scene("dance with medic","LETS HAVE A PARTY starts dancing*","src/images/dancing medic.png")
+        scenes.add(someoneneedshealing)
+        scenes.add(medicisbad)
+        scenes.add(dance)
+        medicmeet.addConnection(1, "Someone needs healing", someoneneedshealing)
+        medicmeet.addConnection(2, "You are a terrible medic", medicisbad)
+        medicmeet.addConnection(3, "Wanna dance?", dance)
+        someoneneedshealing.addConnection(1, "Talk with someone else", eat)
+        dance.addConnection(1, "Talk with someone else", eat)
+
+        // Spy
+        val stealcigarettes = Scene("steal cigarettes","Where did my ciggarettes go?","src/images/angry spy.png")
+        val askaboutscout = Scene("ask how is scout","He doesnt know yet, if you tell him I will kill you","src/images/helicopter spy.png")
+        val spycrab = Scene("spy shows spycrab","Starts crawling around like a crab","src/images/Spy crab.png")
+        scenes.add(stealcigarettes)
+        scenes.add(askaboutscout)
+        scenes.add(spycrab)
+        spymeet.addConnection(1, "Steal spies cigarettes", stealcigarettes)
+        spymeet.addConnection(2, "spy is scouts dad", askaboutscout)
+        spymeet.addConnection(3, "show me the spy crab", spycrab)
+        askaboutscout.addConnection(1, "Talk with someone else", eat)
+        spycrab.addConnection(1, "Talk with someone else", eat)
 
         // Things that bring you back to the start
         val denial = Scene("denial","Scout walks away sadly", "src/images/scout sad.png")
         val death = Scene("You died!", "scout didn't like you taking his chicken", "src/images/scout with gun.png")
         val death2 = Scene("You died!", "scout doesn't like liars", "src/images/scout with gun.png")
+        val death3 = Scene("You died!", "Sasha is great gun you must praise her", "src/images/heavy angry.png")
+        val death4 = Scene("You died!", "Pyro hit you with a flare", "src/images/Pyro flare.png")
+        val death5 = Scene("You died!", "Medic stabbed you with his ubersaw", "src/images/ubersaw medic.png")
+        val death6 = Scene("You died!", "As you were walking away spy found out you stole his cigarettes and backstabbs you", "src/images/spy backstab.png")
+        scenes.add(denial)
+        scenes.add(death)
+        scenes.add(death2)
+        scenes.add(death3)
+        scenes.add(death4)
+        scenes.add(death5)
+        scenes.add(death6)
         take.addConnection(1, "Take it", death)
         Iwasjoking.addConnection(1, "I was joking", death2)
+        makefunsasha.addConnection(1, "Sasha is stupid", death3)
+        pyrohitsapple.addConnection(1, "Get hit by Flare", death4)
+        medicisbad.addConnection(1, "Get impaled by medic", death5)
+        stealcigarettes.addConnection(1, "Get backstabbed by spy", death6)
         deny.addConnection(1, "Scout leaves", denial)
         deny2.addConnection(1, "Scout leaves", denial)
         death.addConnection(1, "Restart", chicken)
         death2.addConnection(1, "Restart", chicken)
+        death3.addConnection(1, "Restart", chicken)
+        death4.addConnection(1, "Restart", chicken)
+        death5.addConnection(1, "Restart", chicken)
+        death6.addConnection(1, "Restart", chicken)
         denial.addConnection(1, "Restart", chicken)
     }
 
@@ -298,6 +363,13 @@ class GUI : JFrame(), ActionListener {
         currentScene = currentScene.choice4Link!!
         showScene()
     }
+
+//    private fun deathcounter(){
+//
+//    }
+//    private fun denycounter(){
+//
+//    }
 }
 
 
