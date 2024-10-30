@@ -17,12 +17,15 @@
 import com.formdev.flatlaf.FlatDarkLaf
 import java.awt.*
 import java.awt.event.*
+import javax.sound.sampled.AudioSystem
 import javax.swing.*
+import kotlin.system.exitProcess
 
 class Scene(
     val name:String,
     val desc:String,
     val img:String,
+    val sound:String,
     val isdeath:Boolean = false,
     val isdenial:Boolean = false
 ) {
@@ -35,30 +38,33 @@ class Scene(
     var choice2Label: String? = null
     var choice3Label: String? = null
     var choice4Label: String? = null
-//
-//    var choice1sound: String? = null
-//    var choice2sound: String? = null
-//    var choice3sound: String? = null
-//    var choice4sound: String? = null
 
-    fun addConnection(choiceNum: Int, label: String, scene: Scene) {
+    var choice1sound: String? = null
+    var choice2sound: String? = null
+    var choice3sound: String? = null
+    var choice4sound: String? = null
+
+    fun addConnection(choiceNum: Int, label: String, scene: Scene, sound:sound) {
         when (choiceNum) {
             1 -> {
                 choice1Link = scene
                 choice1Label = label
-//                choice1sound = sound
+//              choice1sound = sound
             }
             2 -> {
                 choice2Link = scene
                 choice2Label = label
+                choice2sound = sound
             }
             3 -> {
                 choice3Link = scene
                 choice3Label = label
+                choice3sound = sound
             }
             4 -> {
                 choice4Link = scene
                 choice4Label = label
+                choice4sound = sound
             }
         }
     }
@@ -367,11 +373,23 @@ class GUI : JFrame(), ActionListener {
         image = image.getScaledInstance(400, 400, Image.SCALE_SMOOTH)
         imageLabel.icon = ImageIcon(image)
 
+        var sound = this::class.java.getResourceAsStream(currentScene.sound).sound
+        var stream = AudioSystem.getAudioInputStream(sound)
+        var clip = AudioSystem.getClip()
+        clip.open(stream)
+        clip.start()
+
         if (currentScene.isdeath) {
             deaths++
+            if(deaths == 5){
+                exitProcess(0)
+            }
         }
         if (currentScene.isdenial) {
             denial++
+            if(denial == 5){
+                deaths++
+            }
         }
 
         deathsLabel.text = "Deaths: $deaths"
@@ -382,6 +400,7 @@ class GUI : JFrame(), ActionListener {
      */
     private fun choice1Action() {
         currentScene = currentScene.choice1Link!!
+
         showScene()
     }
     private fun choice2Action() {
@@ -396,13 +415,6 @@ class GUI : JFrame(), ActionListener {
         currentScene = currentScene.choice4Link!!
         showScene()
     }
-
-//    private fun deathcounter(){
-//
-//    }
-//    private fun denycounter(){
-//
-//    }
 }
 
 
