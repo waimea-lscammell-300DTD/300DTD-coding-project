@@ -312,7 +312,7 @@ class GUI : JFrame(), ActionListener {
         add(deathsLabel)
 
         denialLabel= JLabel("Deaths: $deaths")
-        denialLabel.bounds = Rectangle(1400, 900, 800, 40)
+        denialLabel.bounds = Rectangle(1350, 900, 800, 40)
         denialLabel.font = baseFont
         add(denialLabel)
     }
