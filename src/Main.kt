@@ -155,10 +155,13 @@ class GUI : JFrame(), ActionListener {
         // Share
         val yeah  =  Scene("Finish Cooking","'yay' scout takes chicken*", "src/images/chicken hat.png")
         val Iwasjoking  =  Scene("I was Joking","Why would you lie to me ;(", "src/images/Scout cry.png")
+        val tellscouthisdad =  Scene("tell scout is dad","REALLY?", "src/images/Scout cry.png")
         scenes.add(yeah)
         scenes.add(Iwasjoking)
+        scenes.add(tellscouthisdad)
         share.addConnection(1, "yeah", yeah)
         share.addConnection(2, "I was Joking", Iwasjoking)
+        share.addConnection(2, "Your dad is spy", tellscouthisdad)
         yeah.addConnection(1, "Talk with someone else", chicken)
 
         // Cook
@@ -235,6 +238,7 @@ class GUI : JFrame(), ActionListener {
         val death4 = Scene("You died!", "Pyro hit you with a flare", "src/images/Pyro flare.png", true)
         val death5 = Scene("You died!", "Medic stabbed you with his ubersaw", "src/images/ubersaw medic.png",true)
         val death6 = Scene("You died!", "As you were walking away spy found out you stole his cigarettes and backstabbs you", "src/images/spy backstab.png",true)
+        val death7 = Scene("You died!", "As you were walking away spy found out you stole his cigarettes and backstabbs you", "src/images/spy backstab.png",true)
         scenes.add(denial)
         scenes.add(death)
         scenes.add(death2)
@@ -242,6 +246,7 @@ class GUI : JFrame(), ActionListener {
         scenes.add(death4)
         scenes.add(death5)
         scenes.add(death6)
+        scenes.add(death7)
         take.addConnection(1, "Take it", death)
         Iwasjoking.addConnection(1, "I was joking", death2)
         makefunsasha.addConnection(1, "Sasha is stupid", death3)
