@@ -25,7 +25,6 @@ class Scene(
     val name:String,
     val desc:String,
     val img:String,
-    val sound:String,
     val isdeath:Boolean = false,
     val isdenial:Boolean = false
 ) {
@@ -44,12 +43,12 @@ class Scene(
     var choice3sound: String? = null
     var choice4sound: String? = null
 
-    fun addConnection(choiceNum: Int, label: String, scene: Scene, sound:sound) {
+    fun addConnection(choiceNum: Int, label: String, scene: Scene, sound: String?=null) {
         when (choiceNum) {
             1 -> {
                 choice1Link = scene
                 choice1Label = label
-//              choice1sound = sound
+                choice1sound = sound
             }
             2 -> {
                 choice2Link = scene
@@ -126,7 +125,7 @@ class GUI : JFrame(), ActionListener {
         scenes.add(no)
         scenes.add(goaway)
         scenes.add(share)
-        chicken.addConnection(1, "yes", yes)
+        chicken.addConnection(1, "yes", yes,)
         chicken.addConnection(2, "no", no)
         chicken.addConnection(3, "go away", goaway)
         chicken.addConnection(4, "share", share)
@@ -373,12 +372,6 @@ class GUI : JFrame(), ActionListener {
         image = image.getScaledInstance(400, 400, Image.SCALE_SMOOTH)
         imageLabel.icon = ImageIcon(image)
 
-        var sound = this::class.java.getResourceAsStream(currentScene.sound).sound
-        var stream = AudioSystem.getAudioInputStream(sound)
-        var clip = AudioSystem.getClip()
-        clip.open(stream)
-        clip.start()
-
         if (currentScene.isdeath) {
             deaths++
             if(deaths == 5){
@@ -399,8 +392,15 @@ class GUI : JFrame(), ActionListener {
      * An Example Action
      */
     private fun choice1Action() {
-        currentScene = currentScene.choice1Link!!
+         if(currentScene.choice1sound != null){
+            var sound = this::class.java.getResourceAsStream(currentScene.choice1sound)
+            var stream = AudioSystem.getAudioInputStream(sound)
+            var clip = AudioSystem.getClip()
+            clip.open(stream)
+            clip.start()
+        }
 
+        currentScene = currentScene.choice1Link!!
         showScene()
     }
     private fun choice2Action() {
