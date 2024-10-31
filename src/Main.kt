@@ -125,7 +125,7 @@ class GUI : JFrame(), ActionListener {
         scenes.add(no)
         scenes.add(goaway)
         scenes.add(share)
-        chicken.addConnection(1, "yes", yes,)
+        chicken.addConnection(1, "yes", yes)
         chicken.addConnection(2, "no", no)
         chicken.addConnection(3, "go away", goaway)
         chicken.addConnection(4, "share", share)
@@ -179,7 +179,7 @@ class GUI : JFrame(), ActionListener {
         scenes.add(pyromeet)
         scenes.add(medicmeet)
         scenes.add(spymeet)
-        eat.addConnection(1, "Say hello to heavy", heavymeet)
+        eat.addConnection(1, "Say hello to heavy", heavymeet,"sounds/heavy intro.wav")
         eat.addConnection(2, "Say hello to pyro", pyromeet)
         eat.addConnection(3, "Say hello to medic", medicmeet)
         eat.addConnection(4, "Say hello to spy", spymeet)
@@ -409,14 +409,38 @@ class GUI : JFrame(), ActionListener {
         showScene()
     }
     private fun choice2Action() {
+        if(currentScene.choice2sound != null){
+            var sound = this::class.java.getResourceAsStream(currentScene.choice2sound)
+            var stream = AudioSystem.getAudioInputStream(sound)
+            var clip = AudioSystem.getClip()
+            clip.open(stream)
+            clip.start()
+        }
+
         currentScene = currentScene.choice2Link!!
         showScene()
     }
     private fun choice3Action() {
+        if(currentScene.choice3sound != null){
+            var sound = this::class.java.getResourceAsStream(currentScene.choice3sound)
+            var stream = AudioSystem.getAudioInputStream(sound)
+            var clip = AudioSystem.getClip()
+            clip.open(stream)
+            clip.start()
+        }
+
         currentScene = currentScene.choice3Link!!
         showScene()
     }
     private fun  choice4Action() {
+        if(currentScene.choice4sound != null){
+            var sound = this::class.java.getResourceAsStream(currentScene.choice4sound)
+            var stream = AudioSystem.getAudioInputStream(sound)
+            var clip = AudioSystem.getClip()
+            clip.open(stream)
+            clip.start()
+        }
+
         currentScene = currentScene.choice4Link!!
         showScene()
     }
