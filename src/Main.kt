@@ -138,7 +138,7 @@ class GUI : JFrame(), ActionListener {
         scenes.add(eat)
         scenes.add(take)
         scenes.add(cook)
-        yes.addConnection(1, "eat", eat)
+        yes.addConnection(1, "eat", eat, "sounds/scout chicken.wav")
         yes.addConnection(2, "take", take)
         yes.addConnection(3, "cook", cook)
 
@@ -180,9 +180,9 @@ class GUI : JFrame(), ActionListener {
         scenes.add(medicmeet)
         scenes.add(spymeet)
         eat.addConnection(1, "Say hello to heavy", heavymeet,"sounds/heavy intro.wav")
-        eat.addConnection(2, "Say hello to pyro", pyromeet)
-        eat.addConnection(3, "Say hello to medic", medicmeet)
-        eat.addConnection(4, "Say hello to spy", spymeet)
+        eat.addConnection(2, "Say hello to pyro", pyromeet, "sounds/pyro intro.wav")
+        eat.addConnection(3, "Say hello to medic", medicmeet,"sounds/medic intro.wav")
+        eat.addConnection(4, "Say hello to spy", spymeet, "sounds/i am the spy.wav")
 
         // Heavy
         val makefunsasha = Scene("Make fun of sasha","Sasha is stupid", "src/images/Heavy with sasha.png")
@@ -213,7 +213,7 @@ class GUI : JFrame(), ActionListener {
         scenes.add(dance)
         medicmeet.addConnection(1, "Someone needs healing", someoneneedshealing)
         medicmeet.addConnection(2, "You are a terrible medic", medicisbad)
-        medicmeet.addConnection(3, "Wanna dance?", dance)
+        medicmeet.addConnection(3, "Wanna dance?", dance, "sounds/medic conga.wav")
         someoneneedshealing.addConnection(1, "Talk with someone else", eat)
         dance.addConnection(1, "Talk with someone else", eat)
 
@@ -226,7 +226,7 @@ class GUI : JFrame(), ActionListener {
         scenes.add(spycrab)
         spymeet.addConnection(1, "Steal spies cigarettes", stealcigarettes)
         spymeet.addConnection(2, "spy is scouts dad", askaboutscout)
-        spymeet.addConnection(3, "show me the spy crab", spycrab)
+        spymeet.addConnection(3, "show me the spy crab", spycrab, "sounds/spy crab.wav")
         askaboutscout.addConnection(1, "Talk with someone else", eat)
         spycrab.addConnection(1, "Talk with someone else", eat)
 
