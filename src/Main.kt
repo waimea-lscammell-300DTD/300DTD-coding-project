@@ -26,7 +26,8 @@ class Scene(
     val desc:String,
     val img:String,
     val isdeath:Boolean = false,
-    val isdenial:Boolean = false
+    val isdenial:Boolean = false,
+    val ismeet:Boolean = false
 ) {
     var choice1Link: Scene? = null
     var choice2Link: Scene? = null
@@ -80,6 +81,7 @@ class GUI : JFrame(), ActionListener {
     var currentScene: Scene
     var deaths = 0
     var denial = 0
+    var meets = 0
 
     // Setup some properties to hold the UI elements
     private lateinit var descriptionLabel: JLabel
@@ -92,6 +94,7 @@ class GUI : JFrame(), ActionListener {
     private lateinit var imageLabel: JLabel
     private lateinit var deathsLabel: JLabel
     private lateinit var denialLabel: JLabel
+    private lateinit var meetLabel: JLabel
 
 
     /**
@@ -186,15 +189,16 @@ class GUI : JFrame(), ActionListener {
 
         // Heavy
         val makefunsasha = Scene("Make fun of sasha","Sasha is stupid", "src/images/Heavy with sasha.png")
-        val askaboutsisters = Scene("ask about sisters","My sisters are doing well, I haven't been able to see them recently though", "src/images/pyro.png")
+        val askaboutsisters = Scene("ask about sisters","My sisters are doing well, I haven't been able to see them recently though", "src/images/pyro.png",false,false, true)
         heavymeet.addConnection(1, "Make fun of sasha", makefunsasha)
         heavymeet.addConnection(2, "Ask about sisters", askaboutsisters)
         askaboutsisters.addConnection(1, "Talk with someone else", eat)
 
+
         // Pyro
         val pyrohitsapple = Scene("Apple challenge","Pyro aims her flare gun at the apple on your head", "src/images/pyro.png")
-        val askaboutpyrogender = Scene("ask about pyro gender","I am a girl :3", "src/images/Fempyro.png")
-        val givealollipop = Scene("ask about pyro gender","THANK YOU LOLLYPOPS ARE MY FAVORITE", "src/images/Lollypop pyro.png")
+        val askaboutpyrogender = Scene("ask about pyro gender","I am a girl :3", "src/images/Fempyro.png",false,false,true)
+        val givealollipop = Scene("ask about pyro gender","THANK YOU LOLLYPOPS ARE MY FAVORITE", "src/images/Lollypop pyro.png",false,false,true)
         scenes.add(pyrohitsapple)
         scenes.add(askaboutpyrogender)
         scenes.add(givealollipop)
@@ -204,10 +208,11 @@ class GUI : JFrame(), ActionListener {
         askaboutpyrogender.addConnection(1, "Talk with someone else", eat)
         givealollipop.addConnection(1, "Talk with someone else", eat)
 
+
         // Medic
-        val someoneneedshealing = Scene("Tell medic someone needs healing","Ok Ill go heal them, thanks for telling me","src/images/healing medic.png")
+        val someoneneedshealing = Scene("Tell medic someone needs healing","Ok Ill go heal them, thanks for telling me","src/images/healing medic.png",false,false,true)
         val medicisbad = Scene("tell medic he is a bad medic","Oh is that what you think of me, I guess you deserve to die","src/images/medic angry.png")
-        val dance = Scene("dance with medic","LETS HAVE A PARTY starts dancing*","src/images/dancing medic.png")
+        val dance = Scene("dance with medic","LETS HAVE A PARTY starts dancing*","src/images/dancing medic.png",false,false,true)
         scenes.add(someoneneedshealing)
         scenes.add(medicisbad)
         scenes.add(dance)
@@ -219,8 +224,8 @@ class GUI : JFrame(), ActionListener {
 
         // Spy
         val stealcigarettes = Scene("steal cigarettes","Where did my ciggarettes go?","src/images/angry spy.png")
-        val askaboutscout = Scene("ask how is scout","He doesnt know yet, if you tell him I will kill you","src/images/helicopter spy.png")
-        val spycrab = Scene("spy shows spycrab","Starts crawling around like a crab","src/images/Spy crab.png")
+        val askaboutscout = Scene("ask how is scout","He doesnt know yet, if you tell him I will kill you","src/images/helicopter spy.png",false,false,true)
+        val spycrab = Scene("spy shows spycrab","Starts crawling around like a crab","src/images/Spy crab.png",false,false,true)
         scenes.add(stealcigarettes)
         scenes.add(askaboutscout)
         scenes.add(spycrab)
@@ -323,10 +328,15 @@ class GUI : JFrame(), ActionListener {
         deathsLabel.font = baseFont
         add(deathsLabel)
 
-        denialLabel= JLabel("Deaths: $deaths")
+        denialLabel= JLabel("Deaths: $denial")
         denialLabel.bounds = Rectangle(1350, 900, 800, 40)
         denialLabel.font = baseFont
         add(denialLabel)
+
+        meetLabel= JLabel("Deaths: $meets")
+        meetLabel.bounds = Rectangle(750, 900, 800, 40)
+        meetLabel.font = baseFont
+        add(meetLabel)
     }
 
     /**
@@ -379,9 +389,9 @@ class GUI : JFrame(), ActionListener {
         image = image.getScaledInstance(400, 400, Image.SCALE_SMOOTH)
         imageLabel.icon = ImageIcon(image)
 
-        if (currentScene.isdeath) {
-            deaths++
-            if(deaths == 5){
+        if (currentScene.ismeet) {
+            meets++
+            if(meets == 4){
                 exitProcess(0)
             }
         }
@@ -391,9 +401,16 @@ class GUI : JFrame(), ActionListener {
                 deaths++
             }
         }
+        if (currentScene.isdeath) {
+            deaths++
+            if(deaths == 5){
+                exitProcess(0)
+            }
+        }
 
         deathsLabel.text = "Deaths: $deaths"
         denialLabel.text = "Denial: $denial"
+        meetLabel.text = "Meets: $meets"
     }
     /**
      * An Example Action
