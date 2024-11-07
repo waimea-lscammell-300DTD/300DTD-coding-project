@@ -392,18 +392,21 @@ class GUI : JFrame(), ActionListener {
         if (currentScene.ismeet) {
             meets++
             if(meets == 4){
+                println("You Win!!!")
                 exitProcess(0)
             }
         }
         if (currentScene.isdenial) {
             denial++
             if(denial == 5){
+                println("Why are you so mean, you got regected to many times")
                 deaths++
             }
         }
         if (currentScene.isdeath) {
             deaths++
             if(deaths == 5){
+                println("YOU DIED!")
                 exitProcess(0)
             }
         }
