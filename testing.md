@@ -13,8 +13,9 @@ if you choose wrong you may pay the price.
 The game has the following features and/or rules:
 
 - Choose 4 choices
-- death and denial scenes
+- death and denial and winning scenes
 - being brought to other scenes by a choice
+- if you meet 4 mercs without dying you win
 
 ---
 
@@ -22,8 +23,9 @@ The game has the following features and/or rules:
 
 The following game features / functionality and player actions will need to be tested:
 
-- FUNCTIONALITY / FEATURE / ACTION TO TEST
-- FUNCTIONALITY / FEATURE / ACTION TO TEST
+- choosing a death choice and checking if the counter goes up
+- FUNCTIONALITY 
+- FEATURE / ACTION TO TEST
 - FUNCTIONALITY / FEATURE / ACTION TO TEST
 - FUNCTIONALITY / FEATURE / ACTION TO TEST
 - FUNCTIONALITY / FEATURE / ACTION TO TEST
