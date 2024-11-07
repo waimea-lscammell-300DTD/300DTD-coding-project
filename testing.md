@@ -30,62 +30,48 @@ The following game features / functionality and player actions will need to be t
 - Choosing an choice and checking to see if the right sound plays / Sounds playing when you make a choice/ Go through the game and test
 all of the buttons and check if their sound works.
 - Testing if the denial, death and meet counters work like they should / death,denial and meet counters / test all of the different outcomes and see if the code is working right
-- FUNCTIONALITY / FEATURE / ACTION TO TEST
 
 The following tests will be run against the completed game. The tests should result in the expected outcomes shown.
 
 
-### TEST NAME HERE
+### Testing if the right choices hide in the right scenes
 
-TEST DESCRIPTION HERE
-
-#### Test Data / Actions to Use
-
-TEST DATA TO USE DETAILED HERE
-
-#### Expected Outcome
-
-EXPECTED OUTCOME DETAILED HERE
-
-
-### TEST NAME HERE
-
-TEST DESCRIPTION HERE
+I will go through the game to see if the right choices show on the right scenes and will hide any spare buttons
 
 #### Test Data / Actions to Use
 
-TEST DATA TO USE DETAILED HERE
-
+The following things I should try
+- Going through every scene and restarting the game if I end up dying, making sure all of the buttons show up
+- If there are buttons that show in the wrong scene or are supposed to be showing I will fix them
 #### Expected Outcome
 
-EXPECTED OUTCOME DETAILED HERE
+The buttons show up correctly for the right scenes
 
+## Button sound testing
 
-### TEST NAME HERE
-
-TEST DESCRIPTION HERE
+Checking if when you press a specific button on a specific scene it will play the right voiceline after you press it
 
 #### Test Data / Actions to Use
 
-TEST DATA TO USE DETAILED HERE
+Playing through every scenes to see if the sounds work (some scenes I purposly didnt add sound)
 
 #### Expected Outcome
 
-EXPECTED OUTCOME DETAILED HERE
+The sounds will work as I wanted them too
 
+### Denial, death and meet counters
 
-### TEST NAME HERE
-
-TEST DESCRIPTION HERE
+Checking if the Denial, death and meet counters work when I die, successfully meet a merk or deny someone.
+I will also check if the death number goes up after I get 3 denials.
+I also check if when you die or win it will come up in the console.
 
 #### Test Data / Actions to Use
 
-TEST DATA TO USE DETAILED HERE
+I will pick the death scenes first, then pick the denial scenes, and then pick the meet scenes
 
 #### Expected Outcome
 
-EXPECTED OUTCOME DETAILED HERE
-
+The counters should go up correctly
 
 ---
 

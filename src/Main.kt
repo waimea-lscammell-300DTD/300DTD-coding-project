@@ -120,30 +120,30 @@ class GUI : JFrame(), ActionListener {
         scenes.add(chicken)
 
         // Scene 1 answers
-        val yes =  Scene("yes","yes", "src/images/scout happy.png")
-        val no =  Scene("no","no", "src/images/scout sad.png")
-        val goaway =  Scene("go away","go away", "src/images/Scout suprised.png")
+        val yes =  Scene("yes","Yes", "src/images/scout happy.png")
+        val no =  Scene("no","No", "src/images/scout sad.png")
+        val goaway =  Scene("go away","Go away", "src/images/Scout suprised.png")
         val share =  Scene("share","Really you would want to share with me?", "src/images/scout chicken costume.png")
         scenes.add(yes)
         scenes.add(no)
         scenes.add(goaway)
         scenes.add(share)
-        chicken.addConnection(1, "yes", yes)
-        chicken.addConnection(2, "no", no)
-        chicken.addConnection(3, "go away", goaway)
-        chicken.addConnection(4, "share", share)
+        chicken.addConnection(1, "Yes", yes)
+        chicken.addConnection(2, "No", no)
+        chicken.addConnection(3, "Go away", goaway)
+        chicken.addConnection(4, "Share", share)
 
 
         // Yes
-        val eat =  Scene("eat ","eating chicken* some other mercenaries arrive. Who would you like to talk to?", "src/images/scout chicken costume.png")
-        val take =  Scene("take ","takes chicken*", "src/images/Scout suprised.png")
-        val cook =  Scene("cook","cooks the chicken some more*", "src/images/chicken hat.png")
+        val eat =  Scene("eat ","Eating chicken* some other mercenaries arrive. Who would you like to talk to?", "src/images/scout chicken costume.png")
+        val take =  Scene("take ","Takes chicken*", "src/images/Scout suprised.png")
+        val cook =  Scene("cook","Cooks the chicken some more*", "src/images/chicken hat.png")
         scenes.add(eat)
         scenes.add(take)
         scenes.add(cook)
-        yes.addConnection(1, "eat", eat, "sounds/scout chicken.wav")
-        yes.addConnection(2, "take", take)
-        yes.addConnection(3, "cook", cook)
+        yes.addConnection(1, "Eat", eat, "sounds/scout chicken.wav")
+        yes.addConnection(2, "Take", take)
+        yes.addConnection(3, "Cook", cook)
 
         // No
         val deny   =  Scene("deny ","ok ill just eat them myself :(", "src/images/scout sad.png")
@@ -156,13 +156,13 @@ class GUI : JFrame(), ActionListener {
         goaway.addConnection(1, "deny", deny2)
 
         // Share
-        val yeah  =  Scene("Finish Cooking","'yay' scout takes chicken*", "src/images/chicken hat.png")
+        val yeah  =  Scene("Finish Cooking","'Yay' scout takes chicken*", "src/images/chicken hat.png")
         val Iwasjoking  =  Scene("I was Joking","Why would you lie to me ;(", "src/images/Scout cry.png")
         val tellscouthisdad =  Scene("tell scout is dad","REALLY?", "src/images/Scout cry.png", )
         scenes.add(yeah)
         scenes.add(Iwasjoking)
         scenes.add(tellscouthisdad)
-        share.addConnection(1, "yeah", yeah)
+        share.addConnection(1, "Yeah", yeah)
         share.addConnection(2, "I was Joking", Iwasjoking, "sounds/scout disgust.wav")
         share.addConnection(2, "Your dad is spy", tellscouthisdad,"sounds/scout dad.wav")
         yeah.addConnection(1, "Talk with someone else", chicken)
@@ -170,7 +170,7 @@ class GUI : JFrame(), ActionListener {
         // Cook
         val finishcooking  =  Scene("Finish Cooking","You cook the chicken and it looks even tastier", "src/images/chicken hat.png")
         scenes.add(finishcooking)
-        cook.addConnection(1, "finish cooking", finishcooking)
+        cook.addConnection(1, "Finish cooking", finishcooking)
         finishcooking.addConnection(1, "Finish cooking", yes)
 
         // Eat
@@ -230,8 +230,8 @@ class GUI : JFrame(), ActionListener {
         scenes.add(askaboutscout)
         scenes.add(spycrab)
         spymeet.addConnection(1, "Steal spies cigarettes", stealcigarettes)
-        spymeet.addConnection(2, "spy is scouts dad", askaboutscout)
-        spymeet.addConnection(3, "show me the spy crab", spycrab, "sounds/spy crab.wav")
+        spymeet.addConnection(2, "Spy is scouts dad", askaboutscout)
+        spymeet.addConnection(3, "Show me the spy crab", spycrab, "sounds/spy crab.wav")
         askaboutscout.addConnection(1, "Talk with someone else", eat)
         spycrab.addConnection(1, "Talk with someone else", eat)
 
@@ -334,7 +334,7 @@ class GUI : JFrame(), ActionListener {
         add(denialLabel)
 
         meetLabel= JLabel("Deaths: $meets")
-        meetLabel.bounds = Rectangle(750, 900, 800, 40)
+        meetLabel.bounds = Rectangle(700, 900, 800, 40)
         meetLabel.font = baseFont
         add(meetLabel)
     }
