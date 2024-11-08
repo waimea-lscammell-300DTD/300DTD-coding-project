@@ -256,7 +256,7 @@ class GUI : JFrame(), ActionListener {
         take.addConnection(1, "Take it", death, "sounds/scout disgust.wav")
         Iwasjoking.addConnection(1, "I was joking", death2, "sounds/kidding.wav")
         makefunsasha.addConnection(1, "Sasha is stupid", death3, "sounds/lesson.wav")
-        pyrohitsapple.addConnection(1, "Get hit by Flare", death4, "sounds/flare.wav")
+        pyrohitsapple.addConnection(1, "Get hit by Flare", death4)
         medicisbad.addConnection(1, "Get impaled by medic", death5, "sounds/medic kill.wav")
         stealcigarettes.addConnection(1, "Get backstabbed by spy", death6, "sounds/spy backstabb.wav")
         tellscouthisdad.addConnection(1, "Spy is scouts dad", death7,"sounds/my apollogies.wav")
