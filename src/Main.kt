@@ -76,6 +76,7 @@ class Scene(
  * GUI class
  * Defines the UI and responds to events
  */
+// all of the variables start at zero becuse you wouldnt want it allready at 1
 class GUI : JFrame(), ActionListener {
     val scenes = mutableListOf<Scene>()
     var currentScene: Scene
@@ -110,7 +111,7 @@ class GUI : JFrame(), ActionListener {
         // Show the app, centred on screen
         setLocationRelativeTo(null)
         isVisible = true
-
+// this makes sure it starts at the first scene
         currentScene = scenes.first()
         showScene()
     }
@@ -274,6 +275,7 @@ class GUI : JFrame(), ActionListener {
     /**
      * Configure the main window
      */
+    // sets up the actual UI
     private fun setupWindow() {
         title = "Hello, World!"
         contentPane.preferredSize = Dimension(1500, 1000)
@@ -289,12 +291,12 @@ class GUI : JFrame(), ActionListener {
      */
     private fun buildUI() {
         val baseFont = Font(Font.SANS_SERIF, Font.PLAIN, 20)
-
+// shows the text that appears on the different scenes
         descriptionLabel = JLabel("Scout appears and walks slowly up to you, he says 'do you have a bucket of chicken?'", SwingConstants.CENTER)
         descriptionLabel.bounds = Rectangle(350, 50, 800, 40)
         descriptionLabel.font = baseFont
         add(descriptionLabel)
-
+// Shows all of the choices spaced out evenly
         choice1Button = JButton("Choice 1")
         choice1Button.bounds = Rectangle(150,650,250,50)
         choice1Button.font = baseFont
@@ -318,11 +320,11 @@ class GUI : JFrame(), ActionListener {
         choice4Button.font = baseFont
         choice4Button.addActionListener(this)
         add(choice4Button)
-
+        // shows the images
         imageLabel = JLabel()
         imageLabel.bounds = Rectangle(550, 150, 400, 400)
         add(imageLabel)
-
+    // The counters to show the deaths, denials and the meets
         deathsLabel= JLabel("Deaths: $deaths")
         deathsLabel.bounds = Rectangle(50, 900, 800, 40)
         deathsLabel.font = baseFont
@@ -342,6 +344,7 @@ class GUI : JFrame(), ActionListener {
     /**
      * Handle any UI events
      */
+    // this sets up the buttons
     override fun actionPerformed(e: ActionEvent?) {
         when (e?.source) {
             choice1Button -> choice1Action()
@@ -350,6 +353,7 @@ class GUI : JFrame(), ActionListener {
             choice4Button -> choice4Action()
         }
     }
+    // this code decides if it will show a button on a specific scene, if its not the right scene it will hide the extra buttons
     private fun showScene() {
         descriptionLabel.text = currentScene.desc
 
@@ -389,6 +393,7 @@ class GUI : JFrame(), ActionListener {
         image = image.getScaledInstance(400, 400, Image.SCALE_SMOOTH)
         imageLabel.icon = ImageIcon(image)
 
+        // Adds 1 to the meet counter
         if (currentScene.ismeet) {
             meets++
             if(meets == 4){
@@ -396,6 +401,7 @@ class GUI : JFrame(), ActionListener {
                 exitProcess(0)
             }
         }
+        // Adds 1 to the meet counter and if it gets to 5 then it will add to the death counter
         if (currentScene.isdenial) {
             denial++
             if(denial == 5){
@@ -403,6 +409,7 @@ class GUI : JFrame(), ActionListener {
                 deaths++
             }
         }
+        // Adds 1 to the death counter
         if (currentScene.isdeath) {
             deaths++
             if(deaths == 5){
@@ -410,7 +417,7 @@ class GUI : JFrame(), ActionListener {
                 exitProcess(0)
             }
         }
-
+        // shows the number of deaths, denials and meets
         deathsLabel.text = "Deaths: $deaths"
         denialLabel.text = "Denial: $denial"
         meetLabel.text = "Meets: $meets"
@@ -418,6 +425,8 @@ class GUI : JFrame(), ActionListener {
     /**
      * An Example Action
      */
+
+    // These make a sound play when you click on a specific choice
     private fun choice1Action() {
          if(currentScene.choice1sound != null){
             var sound = this::class.java.getResourceAsStream(currentScene.choice1sound)
