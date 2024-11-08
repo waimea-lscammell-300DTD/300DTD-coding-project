@@ -80,36 +80,28 @@ The counters should go up correctly
 
 ### Sound Test
 
-All of the sounds played that well and at good volume, none of them played at the wrong time
+The video below shows the sounds being played when you press a choice and it will play a specific sound depending on the scene
 
-![Sound Test](https://mywaimeaschool-my.sharepoint.com/:v:/g/personal/lscammell_waimea_school_nz/EQYJ7WB0YDdAkf1-8Shu5GcB29OwW41D3WZZaphEw_LBPg?e=zbInRE&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
+[Sound Test](https://mywaimeaschool-my.sharepoint.com/:v:/g/personal/lscammell_waimea_school_nz/EQYJ7WB0YDdAkf1-8Shu5GcB29OwW41D3WZZaphEw_LBPg?e=zbInRE&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 
-The 
+Note that if you press 2 buttons quickly that have sounds with them it will play ontop of each other
 
+### Denail, death, meet counter test
 
-### TEST NAME HERE
+This video below shows the player choosing the scenes where you die and the counter going up because of it, it also shows the denial counter go up (also adding to the deaths when it gets to 5) and the meet counter.
+Also when the player dies it says in the console that you have won or died
 
-ACTUAL RESULTS OF TESTING SHOWN HERE
-holder.jpg)
+[Denial, death and meet counter test](https://mywaimeaschool-my.sharepoint.com/:v:/g/personal/lscammell_waimea_school_nz/EV4bxJiikGVHo26-BbjVuGkBeZpYkkVH_URF8G_B7gFWzQ?e=miSRvF&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 
-NOTES REGARDING THE RESULTS HERE
-
-![](images/place
-
-### TEST NAME HERE
-
-ACTUAL RESULTS OF TESTING SHOWN HERE
-
-![](images/placeholder.jpg)
-
-NOTES REGARDING THE RESULTS HERE
+Note that the denial counter doesnt reset after you get to 5 denials
 
 
-### TEST NAME HERE
+### Button Appearing test
 
-ACTUAL RESULTS OF TESTING SHOWN HERE
+In this video below it shows the player playng through the game, in some of the scenes there is blank spaces
+if there isnt bugs then the scenes should have varying buttons showing, some might have 2, some might have 1.
 
-![](images/placeholder.jpg)
+[Button Appearing test](https://mywaimeaschool-my.sharepoint.com/:v:/g/personal/lscammell_waimea_school_nz/ERupSdeqY-RBu1tdioU908MBwHmIKQpsHZ12cfwgj4PGJQ?e=Kijcpj&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 
-NOTES REGARDING THE RESULTS HERE
+note that it is intentional that there is intentional for there to be varying button amounts
 
